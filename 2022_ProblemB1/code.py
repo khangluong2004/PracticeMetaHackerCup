@@ -1,3 +1,8 @@
+'''
+    Solution: Prefill the entire map with trees. Then, check for invalid tree. If invalid and not original tree, remove the trees and checks its neighbours.
+    Repeat until all trees are checked (as the first tree, not as neighbour).
+'''
+
 def is_valid(maps, coord):
     friend = 0
     if coord[0] != 0 and maps[coord[1]][coord[0] - 1] == "^":
