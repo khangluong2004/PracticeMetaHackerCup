@@ -20,18 +20,23 @@ output_f = open("output.txt", "w")
 
 test_num = int(input_f.readline().strip("\n"))
 for test in range(test_num):
-    t = int(input_f.readline().strip("\n"))
+    n = int(input_f.readline().strip("\n"))
     c = input_f.readline().strip("\n")
+    # Solutions accepted by online mechanism (Change first char of given word to ensure C1 is not a "prefix" of any generated encoding)
+    # if c[0] == ".":
+    #     arr = ["-"]
+    # else:
+    #     arr = ["."]
     arr = [".", "-"]
-    combination(arr, 1, 10, c)
+    length = min(10, math.ceil(math.log(n, 2)) + 1)
+    combination(arr, 1, length, c)
     output_f.write("Case #{}:\n".format(test + 1))
-    for i in range(t - 1):
-        if len(c) >= 10:
-            if c[:10] != arr[i]:
+    for i in range(n - 1):
+        if len(c) >= length:
+            if c[:length] != arr[i]:
                 output_f.write(arr[i] + "\n")
         else:
-            if arr[i][(-1* len(c)):] != c: 
-                output_f.write(arr[i] + "\n")
+            output_f.write(arr[i] + "\n")
 
 input_f.close()
 output_f.close()
